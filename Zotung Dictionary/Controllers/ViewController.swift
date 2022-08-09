@@ -13,7 +13,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     var word = [String]()
     var wordFilter = [String]()
     var meaning = [String]()
+    var meaningFilter = [String]()
     var grammar = [String]()
+    var grammarFilter = [String]()
+    
+    var wholeArray = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,20 +37,27 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     func loadDatas(sort: sort){
         var count = 0
-            for voca in sorting(Array: VOCABULARY, sortBy: sort) {
+            for diction in sortDictionary(Array: DICTIONARY, sortBy: sort) {
                 count += 1
-                self.word.append("\(count) " + voca.word)
-                self.wordFilter.append(voca.word)
-                self.meaning.append(voca.meaning)
-                self.grammar.append(voca.grammar)
+                self.word.append("\(count) " + diction.word)
+                self.meaning.append(diction.meaning)
+                self.grammar.append(diction.grammar)
+                
+                self.wordFilter.append(diction.word)
+                self.meaningFilter.append(diction.meaning)
+                self.grammarFilter.append(diction.grammar)
             }
     }
     
     @IBAction func sortButtonClicked(_ sender: Any) {
         word.removeAll()
-        wordFilter.removeAll()
         meaning.removeAll()
         grammar.removeAll()
+        
+        wordFilter.removeAll()
+        meaningFilter.removeAll()
+        grammarFilter.removeAll()
+        
         if isDecended {
             loadDatas(sort: .decending)
             isDecended = false
@@ -94,6 +105,7 @@ extension ViewController: UISearchBarDelegate, UITextFieldDelegate {
                 return true
             }
         })
+       
         tableView.reloadData()
     }
     

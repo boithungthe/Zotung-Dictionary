@@ -8,29 +8,38 @@
 import Foundation
 import UIKit
 
-public class Vocabulary {
-    var word = String()
-    var grammar = String()
-    var meaning = String()
-    var pictureURL = String()
-    
-    init(word: String, grammar: String, meaning: String, pictureURL: String) {
-        self.word = word
-        self.grammar = grammar
-        self.meaning = meaning
-        self.pictureURL = pictureURL
-    }
-}
-
-let VOCABULARY = [
-    Vocabulary(word: "Human", grammar: "Noun", meaning: """
-                CcungccawCcungccawCcungccawCcungccawCcungccawCcu
-                ngccawCcungccawCcungccawCcungccawCcungccawCcungccaw
-                Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw
-                Ccungccaw Ccungccaw Ccungccaw
-                """, pictureURL: ""),
-    Vocabulary(word: "Boy", grammar: "Noun", meaning: "pise, imohpaw, ccavae taraw", pictureURL: ""),
-    Vocabulary(word: "Girl", grammar: "Noun", meaning: "nopi, imohnung, lia-ccanung", pictureURL: ""),
+let DICTIONARY = [
+    Dictionary(word: "Human", grammar: "Noun", meaning: "Ccungccaw", pictureURL: ""),
+    Dictionary(word: "Boy", grammar: "Noun", meaning: "pise, imohpaw, ccavae taraw", pictureURL: ""),
+    Dictionary(word: "Girl", grammar: "Noun", meaning: "nopi, imohnung, lia-ccanung", pictureURL: ""),
 ]
 
+let MAINTOPIC = [mainTopic(topicEnglish: "Greeting", topicZotung: "Bya beih ku naw", detailArray: GREETING),
+                 mainTopic(topicEnglish: "Daily Basic", topicZotung: "Nin takdyh bya ho ku naw", detailArray: DAILYBASIC),
+                 mainTopic(topicEnglish: "Describing people", topicZotung: "Ccungccaw hae kung bya ho ku naw", detailArray: DESCRIBINGPEOPLE),
+]
+
+
+let DAILYBASIC = [
+    Vocabulary(english: "How are you?", translation: "Na dang tou?", ztSpeech: "Na dan toul"),
+    Vocabulary(english: "I am good, thank you. And you?", translation: "Ka dang, nang so?", ztSpeech: "kadan!, non so!"),
+    Vocabulary(english: "Me too!", translation: "Kae mah.", ztSpeech: "Ke mup!"),
+    Vocabulary(english: "Bye", translation: "Mang hoy te.", ztSpeech: "Monhoi tae!"),
+    Vocabulary(english: "What are you doing?", translation: "Paw mou na ci?", ztSpeech: "Pawmounaji!?"),
+    Vocabulary(english: "What did you say?", translation: "Paw na ci mou?", ztSpeech: "Pawnaji mou!"),
+    Vocabulary(english: "Where are you going?", translation: "Tou lan mou na ccia?", ztSpeech: "Toulamouna thia?"),
+    Vocabulary(english: "I am going to work", translation: "Rya hae lan nynh ka ccia", ztSpeech: "rya hel lan nyh kathiaa"),
+    Vocabulary(english: "What do you do?", translation: "Paw rya mou na hae?", ztSpeech: "Paw ryal mou na heh!")
+    
+]
+
+let GREETING = [
+    Vocabulary(english: "Hello!", translation: "Hello!", ztSpeech: "Hallo"),
+    Vocabulary(english: "Welcome!", translation: "Kae ccia due", ztSpeech: "Kei thia dwe!"),
+    Vocabulary(english: "Nice to meet you!", translation: "Accung kuh zah lungtua lan um!", ztSpeech: "a toungku zaah!, lawng twa lan om")
+]
+
+let DESCRIBINGPEOPLE = [
+    Vocabulary(english: "Who is Mr. Birdsell?", translation: "Mr. Birdsell tuh a hung mou?", ztSpeech: "Mister Birdsell tuh a hum mou?")
+    ]
 

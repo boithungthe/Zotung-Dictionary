@@ -17,6 +17,10 @@
 		1132EC9A289F3FBB0037CD6C /* DataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132EC99289F3FBB0037CD6C /* DataFile.swift */; };
 		1132EC9C289F47780037CD6C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132EC9B289F47780037CD6C /* DetailViewController.swift */; };
 		1132EC9F289FFABA0037CD6C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132EC9E289FFAB90037CD6C /* Model.swift */; };
+		1132ECA228A049D70037CD6C /* VocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECA128A049D70037CD6C /* VocaViewController.swift */; };
+		1132ECA428A04A7B0037CD6C /* VocaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECA328A04A7B0037CD6C /* VocaTableViewCell.swift */; };
+		1132ECA628A056A00037CD6C /* VocaDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECA528A056A00037CD6C /* VocaDetailTableViewCell.swift */; };
+		1132ECA828A056BB0037CD6C /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		1132EC99289F3FBB0037CD6C /* DataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFile.swift; sourceTree = "<group>"; };
 		1132EC9B289F47780037CD6C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1132EC9E289FFAB90037CD6C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1132ECA128A049D70037CD6C /* VocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewController.swift; sourceTree = "<group>"; };
+		1132ECA328A04A7B0037CD6C /* VocaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaTableViewCell.swift; sourceTree = "<group>"; };
+		1132ECA528A056A00037CD6C /* VocaDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailTableViewCell.swift; sourceTree = "<group>"; };
+		1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 		1132EC95289F3F070037CD6C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1132ECA028A049AD0037CD6C /* VocaControllers */,
 				1132EC85289F3D550037CD6C /* ViewController.swift */,
 				1132EC96289F3F250037CD6C /* TableViewCell.swift */,
 				1132EC9B289F47780037CD6C /* DetailViewController.swift */,
@@ -101,6 +110,17 @@
 				1132EC9E289FFAB90037CD6C /* Model.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		1132ECA028A049AD0037CD6C /* VocaControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1132ECA128A049D70037CD6C /* VocaViewController.swift */,
+				1132ECA328A04A7B0037CD6C /* VocaTableViewCell.swift */,
+				1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */,
+				1132ECA528A056A00037CD6C /* VocaDetailTableViewCell.swift */,
+			);
+			path = VocaControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,12 +195,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1132EC9F289FFABA0037CD6C /* Model.swift in Sources */,
+				1132ECA828A056BB0037CD6C /* VocaDetailViewController.swift in Sources */,
 				1132EC86289F3D550037CD6C /* ViewController.swift in Sources */,
 				1132EC97289F3F250037CD6C /* TableViewCell.swift in Sources */,
+				1132ECA228A049D70037CD6C /* VocaViewController.swift in Sources */,
 				1132EC82289F3D550037CD6C /* AppDelegate.swift in Sources */,
 				1132EC9C289F47780037CD6C /* DetailViewController.swift in Sources */,
 				1132EC84289F3D550037CD6C /* SceneDelegate.swift in Sources */,
 				1132EC9A289F3FBB0037CD6C /* DataFile.swift in Sources */,
+				1132ECA428A04A7B0037CD6C /* VocaTableViewCell.swift in Sources */,
+				1132ECA628A056A00037CD6C /* VocaDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
