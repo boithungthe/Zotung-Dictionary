@@ -10,11 +10,7 @@ import UIKit
 class VocaViewController: UIViewController, UITableViewDelegate {
     var topicEnglish = [String]()
     var topicZotung = [String]()
-//    var topicDetailArray = [Vocabulary]()
     
-    var english = [String]()
-    var translation = [String]()
-    var zotungSpeech = [String]()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,39 +18,32 @@ class VocaViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
-        
-        for m in mainTopicChooser(Array: MAINTOPIC, sortBy: .original) {
-            topicEnglish.append(m.topicEnglish)
-            topicZotung.append(m.topicZotung)
-            //topicDetailArray.append(contentsOf: m.detailArray)
-        }
+    }
+    private func MainTopic() ->[mainTopic]{
+       return mainTopicChooser(Array: MAINTOPIC, sortBy: .original)
     }
 }
 
 extension VocaViewController: UITableViewDataSource {
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topicEnglish.count
+        return MainTopic().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocaTableViewCell") as! VocaTableViewCell
-        cell.topicLabel.text = topicEnglish[indexPath.row]
-        cell.zotungTopicLabel.text = topicZotung[indexPath.row]
+        cell.topicLabel.text = MainTopic()[indexPath.row].topicEnglish
+        cell.zotungTopicLabel.text = MainTopic()[indexPath.row].topicZotung
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        english.removeAll()
-        translation.removeAll()
-        let selectedItem = topicEnglish[indexPath.row]
-        didSelectMenuItem(named: selectedItem,name: MAINTOPIC[indexPath.row].topicEnglish, array: MAINTOPIC[indexPath.row].detailArray)
+        didSelectMenuItem(name: MainTopic()[indexPath.row].topicEnglish, array: MainTopic()[indexPath.row].detailArray)
     }
 
-    func didSelectMenuItem(named: String, name: String, array: [Vocabulary]) {
-        if named == name {
-            topicSelectorForVocaDV(Array: array, sortBy: .original,VCTitle: named)
-        }
+    func didSelectMenuItem(name: String, array: [Vocabulary]) {
+        topicSelectorForVocaDV(Array: array, sortBy: .original,VCTitle: name)
     }
     
    private func topicSelectorForVocaDV(Array: [Vocabulary], sortBy: sort,VCTitle: String) {
@@ -65,6 +54,7 @@ extension VocaViewController: UITableViewDataSource {
             VC.translation.append(tp.translation)
             VC.zotungSpeech.append(tp.zotungSpeech)
         }
+       
         VC.title = VCTitle
         navigationController?.pushViewController(VC, animated: true)
     }
