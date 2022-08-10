@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortButton: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "ZOTUNG DICTIONARY"
@@ -48,7 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate {
                 self.grammarFilter.append(diction.grammar)
             }
     }
-    
     @IBAction func sortButtonClicked(_ sender: Any) {
         word.removeAll()
         meaning.removeAll()

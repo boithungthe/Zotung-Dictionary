@@ -6,57 +6,89 @@
 //
 
 import UIKit
+import DropDown
 
 class VocaViewController: UIViewController, UITableViewDelegate {
-    var topicEnglish = [String]()
-    var topicZotung = [String]()
+    private var topicEnglish = [String]()
+    private var topicZotung = [String]()
+    private var mainTopicArray = [mainTopic]()
     
     @IBOutlet weak var tableView: UITableView!
+    let menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [
+            "Original",
+            "Accending",
+            "desending",
+        ]
+        return menu
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu.anchorView = tableView
         title = "Lessons"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        
+        mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .original)
+        menu.selectionAction = {index, title in
+            if title == "Original" {
+                self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .original)
+            } else if title == "Accending" {
+                self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .assending)
+            }else if title == "desending" {
+                self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .decending)
+            }
+            self.tableView.reloadData()
+        }
+        
     }
-    private func MainTopic() ->[mainTopic]{
-       return mainTopicChooser(Array: MAINTOPIC, sortBy: .original)
+    @IBAction func sortButtonClicked(_ sander: Any) {
+        menu.show()
+        
+        for i in mainTopicArray {
+            if i.topicEnglish == "Greeting" {
+                for k in i.detailArray {
+                    print("contained: " + k.english)
+                }
+                break
+            } else {
+                print("nothing to pringt")
+            }
+        }
+    }
+    
+    private func didSelectMenuItem(named: String, array: [Vocabulary]) {
+        topicSelectorForVocaDV(Array: array, sortBy: .original,VCTitle: named)
+    }
+    
+    private func topicSelectorForVocaDV(Array: [Vocabulary], sortBy: sort,VCTitle: String) {
+        //Detailviewcontroller only
+        let VC = storyboard?.instantiateViewController(withIdentifier: "VocaDetailViewController") as! VocaDetailViewController
+        VC.mainTopicArray.append(contentsOf: Array)
+        VC.title = VCTitle
+        navigationController?.pushViewController(VC, animated: true)
     }
 }
 
 extension VocaViewController: UITableViewDataSource {
-   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MainTopic().count
+        return mainTopicArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocaTableViewCell") as! VocaTableViewCell
-        cell.topicLabel.text = MainTopic()[indexPath.row].topicEnglish
-        cell.zotungTopicLabel.text = MainTopic()[indexPath.row].topicZotung
+        cell.topicLabel.text = mainTopicArray[indexPath.row].topicEnglish
+        cell.zotungTopicLabel.text = mainTopicArray[indexPath.row].topicZotung
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        didSelectMenuItem(name: MainTopic()[indexPath.row].topicEnglish, array: MainTopic()[indexPath.row].detailArray)
-    }
-
-    func didSelectMenuItem(name: String, array: [Vocabulary]) {
-        topicSelectorForVocaDV(Array: array, sortBy: .original,VCTitle: name)
-    }
-    
-   private func topicSelectorForVocaDV(Array: [Vocabulary], sortBy: sort,VCTitle: String) {
-       //Detailviewcontroller only
-        let VC = storyboard?.instantiateViewController(withIdentifier: "VocaDetailViewController") as! VocaDetailViewController
-        for tp in sortVocabulary(Array: Array, sortBy: sortBy) {
-            VC.english.append(tp.english)
-            VC.translation.append(tp.translation)
-            VC.zotungSpeech.append(tp.zotungSpeech)
-        }
-       
-        VC.title = VCTitle
-        navigationController?.pushViewController(VC, animated: true)
+        didSelectMenuItem(named: mainTopicArray[indexPath.row].topicEnglish,
+                          array: mainTopicArray[indexPath.row].detailArray)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

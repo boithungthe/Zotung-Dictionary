@@ -75,7 +75,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QMh-6q-bkg">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="On8-U8-0eb">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="On8-U8-0eb">
                             <connections>
                                 <action selector="sortButtonClicked:" destination="BYZ-38-t0r" id="QPm-Ul-HG4"/>
                             </connections>
@@ -157,7 +157,13 @@
                             <constraint firstItem="n4c-lR-Pj0" firstAttribute="trailing" secondItem="sLW-iJ-gqX" secondAttribute="trailing" id="Usj-oa-aGF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="jUh-Ms-S1G"/>
+                    <navigationItem key="navigationItem" id="jUh-Ms-S1G">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="naQ-7P-pfv">
+                            <connections>
+                                <action selector="sortButtonClicked:" destination="3Rg-6u-uBQ" id="cCT-6p-2ta"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sLW-iJ-gqX" id="ft3-nk-NLL"/>
                     </connections>
@@ -191,6 +197,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8cZ-40-9iI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lTi-EY-MPj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -232,7 +239,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="1000" id="f4b-m4-Ug6"/>
                                                 </constraints>
-                                                <mutableString key="text">CcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw Ccungcc</mutableString>
+                                                <string key="text">CcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw CcungccCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccawCcungccaw Ccungccaw CcungccawCcungccawCcungccaw Ccungccaw Ccungccaw Ccungccaw Ccungccaw Ccungcc</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -310,7 +317,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uPZ-ju-eYg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="788"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VocaDetailTableViewCell" id="lKG-oI-o0e" customClass="VocaDetailTableViewCell" customModule="Zotung_Dictionary" customModuleProvider="target">
@@ -419,17 +426,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa4-ao-aOf">
+                                <rect key="frame" x="339" y="44" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="A7Y-sU-YDE"/>
+                                    <constraint firstAttribute="height" constant="30" id="w6i-Gy-u9o"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=" "/>
+                                <connections>
+                                    <action selector="favButtonClicked:" destination="7C7-pE-JKd" eventType="touchUpInside" id="Ajf-nV-Fds"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zwU-4t-O2S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uPZ-ju-eYg" firstAttribute="top" secondItem="zwU-4t-O2S" secondAttribute="top" id="95x-PC-ffk"/>
                             <constraint firstItem="uPZ-ju-eYg" firstAttribute="leading" secondItem="zwU-4t-O2S" secondAttribute="leading" id="HIZ-pT-AcF"/>
+                            <constraint firstItem="uPZ-ju-eYg" firstAttribute="top" secondItem="aa4-ao-aOf" secondAttribute="bottom" id="SXZ-C9-KFl"/>
                             <constraint firstItem="zwU-4t-O2S" firstAttribute="bottom" secondItem="uPZ-ju-eYg" secondAttribute="bottom" id="ZP4-iL-iiX"/>
                             <constraint firstItem="zwU-4t-O2S" firstAttribute="trailing" secondItem="uPZ-ju-eYg" secondAttribute="trailing" id="ZfO-3o-h4r"/>
+                            <constraint firstItem="aa4-ao-aOf" firstAttribute="top" secondItem="zwU-4t-O2S" secondAttribute="top" id="bgn-dh-2vb"/>
+                            <constraint firstItem="zwU-4t-O2S" firstAttribute="trailing" secondItem="aa4-ao-aOf" secondAttribute="trailing" constant="25" id="hJu-QY-F5f"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="favButton" destination="aa4-ao-aOf" id="lIv-Kd-XnJ"/>
                         <outlet property="tableView" destination="uPZ-ju-eYg" id="NiR-TA-jA0"/>
                     </connections>
                 </viewController>
@@ -458,6 +480,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="speaker.wave.1.fill" catalog="system" width="128" height="108"/>
         <image name="speaker.wave.2.fill" catalog="system" width="128" height="90"/>
         <namedColor name="AccentColor">

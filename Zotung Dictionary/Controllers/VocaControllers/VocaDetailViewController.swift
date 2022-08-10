@@ -8,31 +8,51 @@
 import UIKit
 
 class VocaDetailViewController: UIViewController, UITableViewDelegate {
-    var english = [String]()
-    var translation = [String]()
-    var zotungSpeech = [String]()
-
+    var mainTopicArray = [Vocabulary]()
+    var dataSaved = [String: String]()
+    let image = UIImageView()
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.reloadData()
+        
+        let data = UserDefaults.standard.value(forKey: title!) as? String
+        if data == title! {
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            view.backgroundColor = .red
+        }
+    }
+    @IBAction func favButtonClicked(_ sender: Any) {
+        let data = UserDefaults.standard.value(forKey: title!) as? String
+        if data == title {
+            favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            UserDefaults.standard.removeObject(forKey: title!)
+            view.backgroundColor = .white
+        } else {
+            view.backgroundColor = .red
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            UserDefaults.standard.set(title!, forKey: title!)
+        }
     }
 }
 
 extension VocaDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return english.count
+        return mainTopicArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocaDetailTableViewCell") as! VocaDetailTableViewCell
-        cell.englishLabel.text = english[indexPath.row]
-        cell.translationLabel.text = translation[indexPath.row]
-        cell.ztSpeechText = zotungSpeech[indexPath.row]
-        cell.englishSpeechText = english[indexPath.row]
+        cell.englishLabel.text = mainTopicArray[indexPath.row].english
+        cell.translationLabel.text = mainTopicArray[indexPath.row].translation
+        cell.ztSpeechText = mainTopicArray[indexPath.row].zotungSpeech
+        cell.englishSpeechText = mainTopicArray[indexPath.row].english
         return cell
     }
 }

@@ -8,17 +8,22 @@
 import Foundation
 import UIKit
 
+//zotung dictionary
 let DICTIONARY = [
     Dictionary(word: "Human", grammar: "Noun", meaning: "Ccungccaw", pictureURL: ""),
     Dictionary(word: "Boy", grammar: "Noun", meaning: "pise, imohpaw, ccavae taraw", pictureURL: ""),
     Dictionary(word: "Girl", grammar: "Noun", meaning: "nopi, imohnung, lia-ccanung", pictureURL: ""),
 ]
 
+
+
+
+//Zorung speaking lesson
+
 let MAINTOPIC = [mainTopic(topicEnglish: "Greeting", topicZotung: "Bya beih ku naw", detailArray: GREETING),
                  mainTopic(topicEnglish: "Daily Basic", topicZotung: "Nin takdyh bya ho ku naw", detailArray: DAILYBASIC),
                  mainTopic(topicEnglish: "Describing people", topicZotung: "Ccungccaw hae kung bya ho ku naw", detailArray: DESCRIBINGPEOPLE),
 ]
-
 
 let DAILYBASIC = [
     Vocabulary(english: "How are you?", translation: "Na dang tou?", ztSpeech: "Na dan toul"),
@@ -35,8 +40,8 @@ let DAILYBASIC = [
 
 let GREETING = [
     Vocabulary(english: "Hello!", translation: "Hello!", ztSpeech: "Hallo"),
-    Vocabulary(english: "Welcome!", translation: "Kae ccia due", ztSpeech: "Kei thia dwe!"),
-    Vocabulary(english: "Nice to meet you!", translation: "Accung kuh zah lungtua lan um!", ztSpeech: "a toungku zaah!, lawng twa lan om")
+    Vocabulary(english: "Welcome!", translation: "Kae ccia due", ztSpeech: "Ke thia dwe!"),
+    Vocabulary(english: "Nice to meet you!", translation: "Atung kuh zah lungtua lan um!", ztSpeech: "a toungku zaah!, lawng twa lan om")
 ]
 
 let DESCRIBINGPEOPLE = [

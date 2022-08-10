@@ -1,0 +1,6 @@
+framework module Pods_Zotung_Dictionary {
+  umbrella header "Pods-Zotung Dictionary-umbrella.h"
+
+  export *
+  module * { export * }
+}
