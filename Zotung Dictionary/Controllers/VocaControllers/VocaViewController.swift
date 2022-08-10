@@ -43,21 +43,15 @@ class VocaViewController: UIViewController, UITableViewDelegate {
             }
             self.tableView.reloadData()
         }
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     @IBAction func sortButtonClicked(_ sander: Any) {
         menu.show()
-        
-        for i in mainTopicArray {
-            if i.topicEnglish == "Greeting" {
-                for k in i.detailArray {
-                    print("contained: " + k.english)
-                }
-                break
-            } else {
-                print("nothing to pringt")
-            }
-        }
     }
     
     private func didSelectMenuItem(named: String, array: [Vocabulary]) {
@@ -80,8 +74,16 @@ extension VocaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocaTableViewCell") as! VocaTableViewCell
-        cell.topicLabel.text = mainTopicArray[indexPath.row].topicEnglish
+        let topicEngishString = mainTopicArray[indexPath.row].topicEnglish
+        cell.topicLabel.text = topicEngishString
         cell.zotungTopicLabel.text = mainTopicArray[indexPath.row].topicZotung
+        
+        if savedFavChecker(string: topicEngishString) == topicEngishString{
+            cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
         return cell
     }
     

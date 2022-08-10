@@ -23,6 +23,7 @@ let DICTIONARY = [
 let MAINTOPIC = [mainTopic(topicEnglish: "Greeting", topicZotung: "Bya beih ku naw", detailArray: GREETING),
                  mainTopic(topicEnglish: "Daily Basic", topicZotung: "Nin takdyh bya ho ku naw", detailArray: DAILYBASIC),
                  mainTopic(topicEnglish: "Describing people", topicZotung: "Ccungccaw hae kung bya ho ku naw", detailArray: DESCRIBINGPEOPLE),
+                 mainTopic(topicEnglish: "Most common phrases", topicZotung: "Mang lung hua paw bya ho naw", detailArray: MOSTCOMMONPRASES)
 ]
 
 let DAILYBASIC = [
@@ -47,4 +48,8 @@ let GREETING = [
 let DESCRIBINGPEOPLE = [
     Vocabulary(english: "Who is Mr. Birdsell?", translation: "Mr. Birdsell tuh a hung mou?", ztSpeech: "Mister Birdsell tuh a hum mou?")
     ]
+
+let MOSTCOMMONPRASES = [
+    Vocabulary(english: "Be careful driving.", translation: "Mawtaw khah rae-rin ku te mung.", ztSpeech: "mawtaw khaah, rar ring ku te maung")
+]
 

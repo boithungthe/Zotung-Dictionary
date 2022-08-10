@@ -30,6 +30,10 @@ func sortDictionary(Array: [Dictionary], sortBy: sort) -> [Dictionary] {
     }
    return stringArray
 }
+func savedFavChecker(string: String) -> String{
+    let data = UserDefaults.standard.value(forKey: string) as? String
+    return data ?? ""
+}
 
 public class Dictionary {
     var word = String()

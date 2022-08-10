@@ -25,17 +25,16 @@ class VocaDetailViewController: UIViewController, UITableViewDelegate {
         let data = UserDefaults.standard.value(forKey: title!) as? String
         if data == title! {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            view.backgroundColor = .red
         }
     }
+    
+   
     @IBAction func favButtonClicked(_ sender: Any) {
         let data = UserDefaults.standard.value(forKey: title!) as? String
         if data == title {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
             UserDefaults.standard.removeObject(forKey: title!)
-            view.backgroundColor = .white
         } else {
-            view.backgroundColor = .red
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             UserDefaults.standard.set(title!, forKey: title!)
         }
