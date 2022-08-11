@@ -61,6 +61,8 @@ public class mainTopic {
     }
 }
 
+//Vocabularies
+
 func mainTopicChooser(Array:[mainTopic], sortBy: sort) -> [mainTopic] {
     var stringArray = [mainTopic]()
     switch sortBy {
@@ -77,7 +79,7 @@ func mainTopicChooser(Array:[mainTopic], sortBy: sort) -> [mainTopic] {
     }
     return stringArray
 }
-//Vocabularies
+
 func sortVocabulary(Array: [Vocabulary], sortBy: sort) -> [Vocabulary] {
     var stringArray = [Vocabulary]()
     switch sortBy {

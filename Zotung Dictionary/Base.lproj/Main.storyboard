@@ -180,6 +180,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="sortButton" destination="naQ-7P-pfv" id="XEt-GE-g3K"/>
                         <outlet property="tableView" destination="sLW-iJ-gqX" id="ft3-nk-NLL"/>
                     </connections>
                 </viewController>
@@ -454,7 +455,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lUV-wI-4vg">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="WWh-7S-bXF">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aa4-ao-aOf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aa4-ao-aOf">
                                 <rect key="frame" x="339" y="5" width="55" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>

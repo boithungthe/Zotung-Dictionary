@@ -13,13 +13,14 @@ class VocaViewController: UIViewController, UITableViewDelegate {
     private var topicZotung = [String]()
     private var mainTopicArray = [mainTopic]()
     
+    @IBOutlet weak var sortButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     let menu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
             "Original",
-            "Accending",
-            "desending",
+            "Ascending",
+            "Descending",
         ]
         return menu
     }()
@@ -36,9 +37,9 @@ class VocaViewController: UIViewController, UITableViewDelegate {
         menu.selectionAction = {index, title in
             if title == "Original" {
                 self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .original)
-            } else if title == "Accending" {
+            } else if title == "Ascending" {
                 self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .assending)
-            }else if title == "desending" {
+            }else if title == "Descending" {
                 self.mainTopicArray = mainTopicChooser(Array: MAINTOPIC, sortBy: .decending)
             }
             self.tableView.reloadData()
@@ -89,6 +90,7 @@ extension VocaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        tabBarController?.tabBar.isHidden = true
         didSelectMenuItem(named: mainTopicArray[indexPath.row].topicEnglish,
                           array: mainTopicArray[indexPath.row].detailArray)
     }
