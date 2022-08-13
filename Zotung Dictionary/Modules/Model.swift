@@ -10,17 +10,17 @@ import UIKit
 
 var isDecended = Bool()
 enum sort {
-    case decending, assending, original
+    case descending, ascending, original
 }
 func sortDictionary(Array: [Dictionary], sortBy: sort) -> [Dictionary] {
     var stringArray = [Dictionary]()
     switch sortBy {
-    case .assending:
+    case .ascending:
         stringArray.append(contentsOf: DICTIONARY.sorted(by: { rhs, lhs in
             rhs.word > lhs.word
         }))
         isDecended = true
-    case .decending:
+    case .descending:
         stringArray.append(contentsOf: DICTIONARY.sorted(by: { rhs, lhs in
             rhs.word < lhs.word
         }))
@@ -30,7 +30,7 @@ func sortDictionary(Array: [Dictionary], sortBy: sort) -> [Dictionary] {
     }
    return stringArray
 }
-func savedFavChecker(string: String) -> String{
+func userDefaultsGetter(string: String) -> String{
     let data = UserDefaults.standard.value(forKey: string) as? String
     return data ?? ""
 }
@@ -71,19 +71,32 @@ public class mainTopic {
 
 //Vocabularies
 
-func mainTopicChooser(Array:[mainTopic], sortBy: sort) -> [mainTopic] {
+func userDefaultsSave(value: Any, forKey: String) {
+    UserDefaults.standard.setValue(value, forKey: forKey)
+}
+
+func mainTopicChooser(sortBy: sort, title: String) -> [mainTopic] {
     var stringArray = [mainTopic]()
+    
+    for i in TOPICMENUTITLE {
+        if title == i.topicTitle || title == "Favorite List" {
+            stringArray = i.mainTopicArray
+            break
+        }
+    }
     switch sortBy {
-    case .decending:
-        stringArray.append(contentsOf: Array.sorted(by: { rhs, lhs in
+    case .descending:
+        userDefaultsSave(value: "Descending", forKey: "sortMainTopicKey")
+        stringArray = stringArray.sorted(by: { rhs, lhs in
             rhs.topicEnglish > lhs.topicEnglish
-        }))
-    case .assending:
-        stringArray.append(contentsOf: Array.sorted(by: { rhs, lhs in
+        })
+    case .ascending:
+        userDefaultsSave(value: "Ascending", forKey: "sortMainTopicKey")
+        stringArray = stringArray.sorted(by: { rhs, lhs in
             rhs.topicEnglish < lhs.topicEnglish
-        }))
+        })
     case .original:
-        stringArray.append(contentsOf: Array)
+        userDefaultsSave(value: "Original", forKey: "sortMainTopicKey")
     }
     return stringArray
 }
@@ -91,12 +104,12 @@ func mainTopicChooser(Array:[mainTopic], sortBy: sort) -> [mainTopic] {
 func sortVocabulary(Array: [Vocabulary], sortBy: sort) -> [Vocabulary] {
     var stringArray = [Vocabulary]()
     switch sortBy {
-    case .assending:
+    case .ascending:
         stringArray.append(contentsOf: Array.sorted(by: { rhs, lhs in
             rhs.english > lhs.english
         }))
         isDecended = true
-    case .decending:
+    case .descending:
         stringArray.append(contentsOf: Array.sorted(by: { rhs, lhs in
             rhs.english < lhs.english
         }))
@@ -121,7 +134,7 @@ public class Vocabulary {
 
 public func selectChoice(classArray: [Vocabulary], StringArray: [String], StringCopy: String) -> [String] {
     var arr = [String]()
-    for voca in sortVocabulary(Array: classArray, sortBy: .decending) {
+    for voca in sortVocabulary(Array: classArray, sortBy: .descending) {
         arr.append(voca.translation)
     }
     return arr

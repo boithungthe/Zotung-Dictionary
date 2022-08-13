@@ -45,6 +45,6 @@ let MOSTCOMMONPRASES = [
     Vocabulary(english: "It is the 8th.", translation: "Suapaw nin tarya nin", ztSpeech: "Suuar paaaw niin taryaaar niiing"),
     Vocabulary(english: "Do you have any plan for today?", translation: "Atu nin paw cyi lan cite mou na tua ku?", ztSpeech: "Atuuu ninnng paaw cyilang cyiteee moou, na tuuar kuu"),
     Vocabulary(english: "I am going to the market later today, you?", translation: "Atu lan sei lang nynh ka cceih cih, nang so?", ztSpeech: "artuuuu laaanng, seeii laang nynh ka teih ciii, naanng sooooow"),
-    Vocabulary(english: "I have to take care of the baby.", translation: "Imua nynh ka ngaw cih.", ztSpeech: "Iimuuaaa nynnnh kangaaaw ciy")
+    Vocabulary(english: "I have to take care of the baby.", translation: "Imua nynh ka ngaw cih.", ztSpeech: "Iimuuaaa nynnnh kangaaaaw ciy")
 ]
 

@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.searchBar.showsCancelButton = false
         self.searchBar.layer.cornerRadius = 60
         self.searchBar.showsBookmarkButton = true
-        loadDatas(sort: .assending)
+        loadDatas(sort: .ascending)
         viewWillAppear(true)
     }
     
@@ -63,11 +63,11 @@ class ViewController: UIViewController, UITableViewDelegate {
         grammarFilter.removeAll()
         
         if isDecended {
-            loadDatas(sort: .decending)
+            loadDatas(sort: .descending)
             isDecended = false
             sortButton.title = "Asd"
         } else{
-            loadDatas(sort: .assending)
+            loadDatas(sort: .ascending)
             isDecended = true
             sortButton.title = "Dec"
 

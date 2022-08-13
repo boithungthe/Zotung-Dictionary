@@ -19,7 +19,7 @@ class VocaTableViewCell: UITableViewCell {
     }
     
     @IBAction func favButtonClicked(_ sender: Any) {
-        if savedFavChecker(string: topicLabel.text!) == topicLabel.text {
+        if userDefaultsGetter(string: topicLabel.text!) == topicLabel.text {
             UserDefaults.standard.removeObject(forKey: topicLabel.text ?? "")
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {

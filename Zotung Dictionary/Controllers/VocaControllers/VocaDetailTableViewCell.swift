@@ -30,16 +30,22 @@ class VocaDetailTableViewCell: UITableViewCell {
     }
     @IBAction func englishSpeakerClicked(_ sender: Any) {
         let speech = AVSpeechUtterance(string: englishSpeechText)
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        }
         synthesizer.speak(speech)
         print("Talking")
     }
     @IBAction func ztSpeakerClicked(_ sender: Any) {
+       
         let utterance = AVSpeechUtterance(string: ztSpeechText)
         utterance.voice = AVSpeechSynthesisVoice(language: "sv-SE") // fi-FI any language that you prefer
         utterance.pitchMultiplier = 1
         utterance.rate = 0.6
-        let synth = AVSpeechSynthesizer()
-        synth.speak(utterance)
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        }
+        synthesizer.speak(utterance)
         print("Talking")
     }
     

@@ -19,7 +19,8 @@ class VocaViewController: UIViewController, UITableViewDelegate, MenuControllerD
     
     @IBOutlet weak var sortButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    let menu: DropDown = {
+    
+    let sortMenu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
             "Original",
@@ -31,63 +32,84 @@ class VocaViewController: UIViewController, UITableViewDelegate, MenuControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu.anchorView = tableView
+        title = userDefaultsGetter(string: "lessonKey")
+        sortMenu.anchorView = tableView
         confirmationAlert(title: "Welcome", message: "Welcome to Zotung English speaking app", view: self, timer: 2)
         
-        title = "Lessons"
+        if userDefaultsGetter(string: "lessonKey") == title {
+            for t in TOPICMENUTITLE {
+                if t.topicTitle == userDefaultsGetter(string: "lessonKey") {
+                    mainTopicArray.removeAll()
+                    mainTopicArray = t.mainTopicArray
+                    break
+                }
+            }
+        }
+        print("keyy iss : " + userDefaultsGetter(string: "lessonKey"))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
-        MoreListMenu()
-        //mainTopicArray = mainTopicChooser(Array: BASICLESSON, sortBy: .original)
-        
-    }
-    func sortTopics(sort: sort) {
-        
-        for m in TOPICMENUTITLE {
-            
-            menu.selectionAction = {index, title in
-                if title == "Original" {
-                    self.mainTopicArray = mainTopicChooser(Array: m.mainTopicArray, sortBy: sort)
-                } else if title == "Ascending" {
-                    self.mainTopicArray = mainTopicChooser(Array: m.mainTopicArray, sortBy: sort)
-                }else if title == "Descending" {
-                    self.mainTopicArray = mainTopicChooser(Array: m.mainTopicArray, sortBy: sort)
-                }
-                self.tableView.reloadData()
-            }
+        sideMenuList()
+        sortMenu.selectionAction = {index, title in
+            userDefaultsSave(value: title, forKey: "sortMainTopicKey")
+            self.sorter()
         }
     }
     
-    func didSelectMenuItem(named: String) {
-        title = named
-        UserDefaults.standard.set(named, forKey: "lessonKey")
-        self.dismiss(animated: true, completion: nil)
-        for i in TOPICMENUTITLE {
-            if named == i.topicTitle {
-                mainTopicArray = i.mainTopicArray
-                
-                tableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sorter()
+        for t in TOPICMENUTITLE {
+            if t.topicTitle == userDefaultsGetter(string: title!) {
+                mainTopicArray.removeAll()
+                mainTopicArray = t.mainTopicArray
+                break
             }
         }
+        tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
     }
+    
+    func sorter() {
+        let viewTitle = userDefaultsGetter(string: "lessonKey")
+        let key = userDefaultsGetter(string: "sortMainTopicKey")
+        if key == "Original" {
+            print("original hehe")
+            self.mainTopicArray = mainTopicChooser(sortBy: .original, title: viewTitle)
+        } else if key == "Ascending" {
+            print("ascening haha ")
+            self.mainTopicArray = mainTopicChooser(sortBy: .ascending, title: viewTitle)
+        }else if key == "Descending" {
+            print("descending haha")
+            self.mainTopicArray = mainTopicChooser(sortBy: .descending, title: viewTitle)
+        }
+        print("key is : \(key)")
+        self.tableView.reloadData()
+    }
+  
     
     @IBAction func didTapMenu() {
         present(sideMenu!, animated: true)
         print("more list tapped...")
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-    func topTitles() -> [String] {
+
+    func didSelectMenuItem(named: String) {
+        title = named
+        UserDefaults.standard.set(named, forKey: "lessonKey")
+        self.dismiss(animated: true, completion: nil)
+        mainTopicArray = mainTopicChooser(sortBy: .original, title: named)
+        tableView.reloadData()
+    }
+    
+    func sideMenuList() {
         var array = [String]()
 
         for i in TOPICMENUTITLE {
             array.append(i.topicTitle)
         }
-        return array
-    }
-    
-    func MoreListMenu() {
-        let menu = moreListMenuController(with: topTitles())
+        
+        let menu = moreListMenuController(with: array)
         sideMenu = SideMenuNavigationController(rootViewController:  menu)
         menu.delegate = self
         sideMenu?.leftSide = true
@@ -104,22 +126,8 @@ class VocaViewController: UIViewController, UITableViewDelegate, MenuControllerD
         navigationController?.pushViewController(VC, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let data = UserDefaults.standard.value(forKey: "lessonKey") as! String
-        
-        for t in TOPICMENUTITLE {
-            if data == t.topicTitle {
-                mainTopicArray.removeAll()
-                mainTopicArray = t.mainTopicArray
-            }
-        }
-        tableView.reloadData()
-        tabBarController?.tabBar.isHidden = false
-    }
-    
     @IBAction func sortButtonClicked(_ sander: Any) {
-        menu.show()
+        sortMenu.show()
     }
     
     private func didSelectMenuItem(named: String, array: [Vocabulary]) {
@@ -146,7 +154,7 @@ extension VocaViewController: UITableViewDataSource {
         cell.topicLabel.text = topicEngishString
         cell.zotungTopicLabel.text = mainTopicArray[indexPath.row].topicZotung
         
-        if savedFavChecker(string: topicEngishString) == topicEngishString{
+        if userDefaultsGetter(string: topicEngishString) == topicEngishString{
             cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             cell.favButton.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -182,7 +190,6 @@ extension VocaViewController: UITableViewDataSource {
 
 
 
-
 protocol MenuControllerDelegate {
     func didSelectMenuItem(named: String)
 }
@@ -209,7 +216,7 @@ class moreListMenuController: UITableViewController, UIPopoverPresentationContro
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "menuCell")
         tableView.backgroundColor = .systemGray
         tableView.reloadData()
-        view.backgroundColor = .gray
+        view.backgroundColor = .systemTeal
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
@@ -219,7 +226,7 @@ class moreListMenuController: UITableViewController, UIPopoverPresentationContro
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath)
         
@@ -228,18 +235,18 @@ class moreListMenuController: UITableViewController, UIPopoverPresentationContro
         let view = UIView()
         view.backgroundColor = UIColor.systemBrown
         cell.selectedBackgroundView = view
-        if cell.textLabel?.text == "Basic lesson" {
-            cell.backgroundColor = .purple
-        } else if cell.textLabel?.text == "Level 1" {
-            cell.backgroundColor = .orange
-        }  else if cell.textLabel?.text == "New Songs" {
-            cell.backgroundColor = UIColor.blue
+        //choice.append(i.topicTitle)
+        if userDefaultsGetter(string: "lessonKey") == menuItems[indexPath.row] {
+            cell.backgroundColor = .systemBrown
+        } else {
+            cell.backgroundColor = .systemGray
         }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+   //     tableView.deselectRow(at: indexPath, animated: false)
 //
 //        let seletedItem = self.menuItems[indexPath.row]
 //        self.delegate?.didSelectMenuItem(named: seletedItem)
@@ -247,7 +254,7 @@ class moreListMenuController: UITableViewController, UIPopoverPresentationContro
         
         let seletedItem = self.menuItems[indexPath.row]
 
-        let alert = UIAlertController(title: "\(seletedItem )", message: "" , preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(seletedItem)", message: "" , preferredStyle: .alert)
                 alert.accessibilityFrame = CGRect(x: 0, y: 0, width: 30, height: 10)
                 let when = DispatchTime.now() + 0.2
                 DispatchQueue.main.asyncAfter(deadline: when){

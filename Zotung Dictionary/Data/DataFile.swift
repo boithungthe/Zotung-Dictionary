@@ -21,6 +21,5 @@ let DICTIONARY = [
 //Zorung speaking lesson
 
 let TOPICMENUTITLE = [menuTopic(topicTitle: "Basic lesson", mainTopicArray: BASICLESSON),
-                      menuTopic(topicTitle: "Level 1", mainTopicArray: LEVELONELESSON)
-
+                      menuTopic(topicTitle: "Level 1", mainTopicArray: LEVELONELESSON),
 ]

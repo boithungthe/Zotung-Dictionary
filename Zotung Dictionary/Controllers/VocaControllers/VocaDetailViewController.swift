@@ -12,6 +12,7 @@ class VocaDetailViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var favListViewButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

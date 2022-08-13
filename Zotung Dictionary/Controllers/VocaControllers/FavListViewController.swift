@@ -30,6 +30,7 @@ class FavListViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+       
         view.addSubview(noDataViewLabel)
     }
     
@@ -39,13 +40,8 @@ class FavListViewController: UIViewController, UITableViewDelegate {
             let alert = UIAlertController(title: "Clear all?", message: "Are you sure you want to clear the list", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default))
             alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: { action in
-                self.mainTp.removeAll()
-                for t in TOPICMENUTITLE {
-                    for m in mainTopicChooser(Array: t.mainTopicArray, sortBy: .original) {
-                        if m.topicEnglish == savedFavChecker(string: m.topicEnglish) {
-                            UserDefaults.standard.removeObject(forKey: m.topicEnglish)
-                        }
-                    }
+                for m in self.mainTp {
+                    UserDefaults.standard.removeObject(forKey: m.topicEnglish)
                 }
                 self.noDataViewLabel.isHidden = false
                 self.tableView.reloadData()
@@ -56,12 +52,13 @@ class FavListViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var tArray = [mainTopic]()
         for t in TOPICMENUTITLE {
             for i in t.mainTopicArray {
-                if i.topicEnglish == savedFavChecker(string: i.topicEnglish) {
+                if i.topicEnglish == userDefaultsGetter(string: i.topicEnglish) {
                     tArray.append(i)
                 }
             }
@@ -87,7 +84,7 @@ class FavListViewController: UIViewController, UITableViewDelegate {
     
     func favChooser(lesson: [mainTopic],sort: sort) {
             mainTp.removeAll()
-            mainTp.append(contentsOf: mainTopicChooser(Array: lesson, sortBy: sort))
+            mainTp.append(contentsOf: lesson)
         tableView.reloadData()
     }
 }
@@ -109,6 +106,7 @@ extension FavListViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         print("select at :  \(indexPath.row)")
         let VC = storyboard?.instantiateViewController(withIdentifier: "VocaDetailViewController") as! VocaDetailViewController
+        VC.favListViewButton.isEnabled = false
         VC.title = mainTp[indexPath.row].topicEnglish
         for i in TOPICMENUTITLE {
             for m in i.mainTopicArray {
