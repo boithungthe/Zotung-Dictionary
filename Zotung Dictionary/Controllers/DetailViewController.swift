@@ -25,6 +25,5 @@ class DetailViewController: UIViewController {
     @IBAction func speaker(_ sender: Any) {
        let speech = AVSpeechUtterance(string: "khae song saah")
         synthesizer.speak(speech)
-        print("Talking")
     }
 }

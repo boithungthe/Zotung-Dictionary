@@ -48,7 +48,15 @@ public class Dictionary {
         self.pictureURL = pictureURL
     }
 }
-
+public class menuTopic {
+    var topicTitle = String()
+    var mainTopicArray = [mainTopic]()
+    
+    init(topicTitle: String, mainTopicArray: [mainTopic]) {
+        self.topicTitle = topicTitle
+        self.mainTopicArray = mainTopicArray
+    }
+}
 public class mainTopic {
     var topicEnglish = String()
     var topicZotung = String()
@@ -117,4 +125,16 @@ public func selectChoice(classArray: [Vocabulary], StringArray: [String], String
         arr.append(voca.translation)
     }
     return arr
+}
+
+
+
+public func confirmationAlert(title: String, message: String, view: UIViewController, timer: Double) {
+    let when = DispatchTime.now() + timer
+    let confirmation = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    view.present(confirmation, animated: true)
+    
+    DispatchQueue.main.asyncAfter(deadline: when) {
+        confirmation.dismiss(animated: true)
+    }
 }

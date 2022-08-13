@@ -8,5 +8,6 @@ target 'Zotung Dictionary' do
   # Pods for Zotung Dictionary
 
 pod 'DropDown'
+pod 'SideMenu'
 
 end

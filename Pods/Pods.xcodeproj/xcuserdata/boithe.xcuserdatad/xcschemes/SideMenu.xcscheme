@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4216A132D05725D9DB712A1B70BC30CF"
-               BuildableName = "Pods_Zotung_Dictionary.framework"
-               BlueprintName = "Pods-Zotung Dictionary"
+               BlueprintIdentifier = "C4A0A7D8591B67FB75E2E8D215E3735B"
+               BuildableName = "SideMenu.framework"
+               BlueprintName = "SideMenu"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

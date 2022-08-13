@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.searchBar.layer.cornerRadius = 60
         self.searchBar.showsBookmarkButton = true
         loadDatas(sort: .assending)
+        viewWillAppear(true)
     }
     
     func loadDatas(sort: sort){
@@ -47,6 +48,10 @@ class ViewController: UIViewController, UITableViewDelegate {
                 self.meaningFilter.append(diction.meaning)
                 self.grammarFilter.append(diction.grammar)
             }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     @IBAction func sortButtonClicked(_ sender: Any) {
         word.removeAll()

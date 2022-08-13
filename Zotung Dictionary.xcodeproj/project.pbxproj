@@ -24,6 +24,10 @@
 		1132ECA828A056BB0037CD6C /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */; };
 		1132ECAD28A3122A0037CD6C /* DropCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1132ECAB28A3122A0037CD6C /* DropCell.swift */; };
 		1132ECAE28A3122A0037CD6C /* DropCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1132ECAC28A3122A0037CD6C /* DropCell.xib */; };
+		11B80E8A28A493560022A107 /* FavListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B80E8928A493560022A107 /* FavListViewController.swift */; };
+		11B80E8C28A493700022A107 /* FavListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B80E8B28A493700022A107 /* FavListTableViewCell.swift */; };
+		11B80E8E28A71F5E0022A107 /* BasicLessonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B80E8D28A71F5E0022A107 /* BasicLessonData.swift */; };
+		11B80E9028A71F830022A107 /* LevelOneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B80E8F28A71F830022A107 /* LevelOneData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		1132ECAB28A3122A0037CD6C /* DropCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropCell.swift; sourceTree = "<group>"; };
 		1132ECAC28A3122A0037CD6C /* DropCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropCell.xib; sourceTree = "<group>"; };
+		11B80E8928A493560022A107 /* FavListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListViewController.swift; sourceTree = "<group>"; };
+		11B80E8B28A493700022A107 /* FavListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListTableViewCell.swift; sourceTree = "<group>"; };
+		11B80E8D28A71F5E0022A107 /* BasicLessonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLessonData.swift; sourceTree = "<group>"; };
+		11B80E8F28A71F830022A107 /* LevelOneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOneData.swift; sourceTree = "<group>"; };
 		4F69046B49F9622FC3A569E2 /* Pods-Zotung Dictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zotung Dictionary.release.xcconfig"; path = "Target Support Files/Pods-Zotung Dictionary/Pods-Zotung Dictionary.release.xcconfig"; sourceTree = "<group>"; };
 		E512D81A7DA6E7DC9B414A05 /* Pods_Zotung_Dictionary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zotung_Dictionary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EE62E6B17198D982A28FE6 /* Pods-Zotung Dictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zotung Dictionary.debug.xcconfig"; path = "Target Support Files/Pods-Zotung Dictionary/Pods-Zotung Dictionary.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				1132EC99289F3FBB0037CD6C /* DataFile.swift */,
+				11B80E8D28A71F5E0022A107 /* BasicLessonData.swift */,
+				11B80E8F28A71F830022A107 /* LevelOneData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -132,6 +142,8 @@
 				1132ECA328A04A7B0037CD6C /* VocaTableViewCell.swift */,
 				1132ECA728A056BB0037CD6C /* VocaDetailViewController.swift */,
 				1132ECA528A056A00037CD6C /* VocaDetailTableViewCell.swift */,
+				11B80E8928A493560022A107 /* FavListViewController.swift */,
+				11B80E8B28A493700022A107 /* FavListTableViewCell.swift */,
 			);
 			path = VocaControllers;
 			sourceTree = "<group>";
@@ -270,13 +282,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1132EC9F289FFABA0037CD6C /* Model.swift in Sources */,
+				11B80E9028A71F830022A107 /* LevelOneData.swift in Sources */,
 				1132ECA828A056BB0037CD6C /* VocaDetailViewController.swift in Sources */,
 				1132EC86289F3D550037CD6C /* ViewController.swift in Sources */,
+				11B80E8C28A493700022A107 /* FavListTableViewCell.swift in Sources */,
 				1132EC97289F3F250037CD6C /* TableViewCell.swift in Sources */,
 				1132ECA228A049D70037CD6C /* VocaViewController.swift in Sources */,
 				1132EC82289F3D550037CD6C /* AppDelegate.swift in Sources */,
 				1132ECAD28A3122A0037CD6C /* DropCell.swift in Sources */,
 				1132EC9C289F47780037CD6C /* DetailViewController.swift in Sources */,
+				11B80E8E28A71F5E0022A107 /* BasicLessonData.swift in Sources */,
+				11B80E8A28A493560022A107 /* FavListViewController.swift in Sources */,
 				1132EC84289F3D550037CD6C /* SceneDelegate.swift in Sources */,
 				1132EC9A289F3FBB0037CD6C /* DataFile.swift in Sources */,
 				1132ECA428A04A7B0037CD6C /* VocaTableViewCell.swift in Sources */,

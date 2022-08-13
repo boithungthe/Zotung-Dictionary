@@ -20,36 +20,7 @@ let DICTIONARY = [
 
 //Zorung speaking lesson
 
-let MAINTOPIC = [mainTopic(topicEnglish: "Greeting", topicZotung: "Bya beih ku naw", detailArray: GREETING),
-                 mainTopic(topicEnglish: "Daily Basic", topicZotung: "Nin takdyh bya ho ku naw", detailArray: DAILYBASIC),
-                 mainTopic(topicEnglish: "Describing people", topicZotung: "Ccungccaw hae kung bya ho ku naw", detailArray: DESCRIBINGPEOPLE),
-                 mainTopic(topicEnglish: "Most common phrases", topicZotung: "Mang lung hua paw bya ho naw", detailArray: MOSTCOMMONPRASES)
+let TOPICMENUTITLE = [menuTopic(topicTitle: "Basic lesson", mainTopicArray: BASICLESSON),
+                      menuTopic(topicTitle: "Level 1", mainTopicArray: LEVELONELESSON)
+
 ]
-
-let DAILYBASIC = [
-    Vocabulary(english: "How are you?", translation: "Na dang tou?", ztSpeech: "Na dan toul"),
-    Vocabulary(english: "I am good, thank you. And you?", translation: "Ka dang, nang so?", ztSpeech: "kadan!, non so!"),
-    Vocabulary(english: "Me too!", translation: "Kae mah.", ztSpeech: "Ke mup!"),
-    Vocabulary(english: "Bye", translation: "Mang hoy te.", ztSpeech: "Monhoi tae!"),
-    Vocabulary(english: "What are you doing?", translation: "Paw mou na ci?", ztSpeech: "Pawmounaji!?"),
-    Vocabulary(english: "What did you say?", translation: "Paw na ci mou?", ztSpeech: "Pawnaji mou!"),
-    Vocabulary(english: "Where are you going?", translation: "Tou lan mou na ccia?", ztSpeech: "Toulamouna thia?"),
-    Vocabulary(english: "I am going to work", translation: "Rya hae lan nynh ka ccia", ztSpeech: "rya hel lan nyh kathiaa"),
-    Vocabulary(english: "What do you do?", translation: "Paw rya mou na hae?", ztSpeech: "Paw ryal mou na heh!")
-    
-]
-
-let GREETING = [
-    Vocabulary(english: "Hello!", translation: "Hello!", ztSpeech: "Hallo"),
-    Vocabulary(english: "Welcome!", translation: "Kae ccia due", ztSpeech: "Ke thia dwe!"),
-    Vocabulary(english: "Nice to meet you!", translation: "Atung kuh zah lungtua lan um!", ztSpeech: "a toungku zaah!, lawng twa lan om")
-]
-
-let DESCRIBINGPEOPLE = [
-    Vocabulary(english: "Who is Mr. Birdsell?", translation: "Mr. Birdsell tuh a hung mou?", ztSpeech: "Mister Birdsell tuh a hum mou?")
-    ]
-
-let MOSTCOMMONPRASES = [
-    Vocabulary(english: "Be careful driving.", translation: "Mawtaw khah rae-rin ku te mung.", ztSpeech: "mawtaw khaah, rar ring ku te maung")
-]
-

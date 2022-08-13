@@ -1,16 +1,20 @@
 PODS:
   - DropDown (2.3.13)
+  - SideMenu (6.5.0)
 
 DEPENDENCIES:
   - DropDown
+  - SideMenu
 
 SPEC REPOS:
   trunk:
     - DropDown
+    - SideMenu
 
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 85e75bc5539dd729aa4060442aacf09266dd4611
+PODFILE CHECKSUM: e83469f0914be40419f4c78e0092eca9cc0d547c
 
 COCOAPODS: 1.11.2
